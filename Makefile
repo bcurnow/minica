@@ -4,7 +4,7 @@ SHELL := /bin/bash
 currentDir := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 imageName := minica
 
-CA_PATH ?= /opt/ca
+CA_PATH ?= /opt/devCA
 
 build:
 	docker buildx build \
@@ -13,4 +13,4 @@ build:
 	  ${currentDir}
 
 minica:
-	docker run --platform linux/arm/v6 --mount src=${CA_PATH},target=/opt/localCA,type=bind minica ${MINICA_ARGS}
+	docker run --platform linux/arm/v6 --mount src=${CA_PATH},target=/opt/devCA,type=bind minica ${MINICA_ARGS}
